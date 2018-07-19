@@ -42,19 +42,20 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnSetting = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtRawSourceCode
             // 
-            this.txtRawSourceCode.Location = new System.Drawing.Point(31, 87);
+            this.txtRawSourceCode.Location = new System.Drawing.Point(31, 136);
             this.txtRawSourceCode.Name = "txtRawSourceCode";
-            this.txtRawSourceCode.Size = new System.Drawing.Size(777, 364);
+            this.txtRawSourceCode.Size = new System.Drawing.Size(777, 590);
             this.txtRawSourceCode.TabIndex = 0;
             this.txtRawSourceCode.Text = "";
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(830, 87);
+            this.btnStart.Location = new System.Drawing.Point(830, 136);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(134, 38);
             this.btnStart.TabIndex = 1;
@@ -72,7 +73,7 @@
             // lbMessage
             // 
             this.lbMessage.AutoSize = true;
-            this.lbMessage.Location = new System.Drawing.Point(898, 246);
+            this.lbMessage.Location = new System.Drawing.Point(898, 234);
             this.lbMessage.Name = "lbMessage";
             this.lbMessage.Size = new System.Drawing.Size(0, 17);
             this.lbMessage.TabIndex = 2;
@@ -116,7 +117,7 @@
             // lbState
             // 
             this.lbState.AutoSize = true;
-            this.lbState.Location = new System.Drawing.Point(898, 187);
+            this.lbState.Location = new System.Drawing.Point(898, 198);
             this.lbState.Name = "lbState";
             this.lbState.Size = new System.Drawing.Size(0, 17);
             this.lbState.TabIndex = 7;
@@ -151,26 +152,37 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(827, 187);
+            this.label2.Location = new System.Drawing.Point(827, 198);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 17);
+            this.label2.Size = new System.Drawing.Size(45, 17);
             this.label2.TabIndex = 11;
-            this.label2.Text = "state:";
+            this.label2.Text = "State:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(827, 246);
+            this.label3.Location = new System.Drawing.Point(827, 234);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 17);
+            this.label3.Size = new System.Drawing.Size(52, 17);
             this.label3.TabIndex = 12;
-            this.label3.Text = "result:";
+            this.label3.Text = "Result:";
+            // 
+            // btnSetting
+            // 
+            this.btnSetting.Location = new System.Drawing.Point(988, 134);
+            this.btnSetting.Name = "btnSetting";
+            this.btnSetting.Size = new System.Drawing.Size(127, 40);
+            this.btnSetting.TabIndex = 13;
+            this.btnSetting.Text = "Setting";
+            this.btnSetting.UseVisualStyleBackColor = true;
+            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1238, 485);
+            this.ClientSize = new System.Drawing.Size(1308, 798);
+            this.Controls.Add(this.btnSetting);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -185,7 +197,7 @@
             this.Controls.Add(this.btnStart);
             this.Controls.Add(this.txtRawSourceCode);
             this.Name = "Main";
-            this.Text = "Form1";
+            this.Text = "Debug";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,6 +219,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnSetting;
     }
 }
 

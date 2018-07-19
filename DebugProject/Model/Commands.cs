@@ -12,6 +12,7 @@ namespace DebugProject.Model
     {
         private static readonly string Carries = @"/C ";
         private static readonly string CompileJava = "javac ";
+        public static int Time = 2000;
         public static string ProcessCompileJava()
         {
             Process process = new Process();//khoi tao process
@@ -50,7 +51,7 @@ namespace DebugProject.Model
             }
             sw.Close();
             /*kiem tra thoi gian chay*/
-            Boolean TimeLimit = process.WaitForExit(2000);
+            Boolean TimeLimit = process.WaitForExit(Time);
             if (TimeLimit == false)
             {
                 process.Kill();
@@ -62,6 +63,16 @@ namespace DebugProject.Model
             result.Output = sr.ReadToEnd();
             result.Error = process.StandardError.ReadToEnd();           
             return result;
+        }
+        public static void OpenFolder(string path)
+        {
+            Process process = new Process(); //khoi tao process
+            Result result = new Result(); //khoi tao doi tuong de luu tru ket qua tu process
+            ProcessStartInfo StartInfo = new ProcessStartInfo();//khoi tao info chay cho process
+            StartInfo.FileName = "explorer.exe";
+            StartInfo.Arguments = path;
+            process.StartInfo = StartInfo;
+            process.Start();//chay process
         }
     }
 }

@@ -11,6 +11,9 @@ namespace DebugProject.Model
     {   //general  
         public static readonly string PathFormat = @"\";
         public static readonly string TextFileType = ".txt";
+        public static string AnswerFileType = ".ans";
+        public static string OutputFileType = ".out";
+        public static string customFileType = ".txt";
         //java
         public static readonly string JavaFileName = "Main";
         public static readonly string JavaFileType = ".java";        
@@ -63,7 +66,15 @@ namespace DebugProject.Model
         }
         public static string[] GetOutputFilePaths(string Path)
         {
-
+            string OutType = TextFileType;
+            if(customFileType.Equals(OutputFileType))
+            {
+                OutType = OutputFileType;
+            }
+            if (customFileType.Equals(AnswerFileType))
+            {
+                OutType = AnswerFileType;
+            }
             DirectoryInfo Dir = new DirectoryInfo(Path);
             string[] FilePaths = new string[Dir.GetFiles().Length];
             int i = 0;
@@ -71,7 +82,7 @@ namespace DebugProject.Model
             {
                 int Index = File.Name.LastIndexOf('.');
                 string Temp = File.Name.Substring(0, Index);
-                string Name = Directories.GetOutDir() + @"\" + Temp + ".out";
+                string Name = Directories.GetOutDir() + @"\" + Temp + OutType;
                 FilePaths[i++] = Name;
             }
             return FilePaths;

@@ -8,3 +8,4 @@ c:\users\duc pc\documents\visual studio 2015\Projects\DebugProject\DebugProject\
 c:\users\duc pc\documents\visual studio 2015\Projects\DebugProject\DebugProject\obj\Debug\DebugProject.pdb
 c:\users\duc pc\documents\visual studio 2015\Projects\DebugProject\DebugProject\obj\Debug\DebugProject.Main.resources
 C:\Users\Duc PC\documents\visual studio 2015\Projects\DebugProject\DebugProject\obj\Debug\DebugProject.ErrorForm.resources
+C:\Users\Duc PC\Documents\Visual Studio 2015\Projects\DebugProject\DebugProject\obj\Debug\DebugProject.Setting.resources

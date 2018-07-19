@@ -13,6 +13,8 @@ namespace DebugProject.Model
         private static readonly string BaseDir = @"\BASE";
         private static readonly string MainDir = @"\MAIN";
         private static readonly string OutputDir = @"\OUT";
+        public static string CustomOutputDir { get; set; }
+
          
 
         //create directory
@@ -67,10 +69,22 @@ namespace DebugProject.Model
                 file.Delete();
             }    
         }
+        public static void ClearCustomDir()
+        {
+            if(CustomOutputDir != null)
+            {
+                DirectoryInfo dir = new DirectoryInfo(CustomOutputDir);
+                foreach (FileInfo file in dir.GetFiles())
+                {
+                    file.Delete();
+                }
+            }
+        }
         public static void ClearAll()
         {
             ClearMainDir();
             ClearOutDir();
+            ClearCustomDir();
         }
         //get directory
         public static string GetMainDir()
@@ -79,7 +93,9 @@ namespace DebugProject.Model
         }
         public static string GetOutDir()
         {
-            return Root + BaseDir + OutputDir;
+            if(CustomOutputDir == null)
+                return Root + BaseDir + OutputDir;
+            return CustomOutputDir;
         }
         //check directory
         public static Boolean isDirEmpty(string path)

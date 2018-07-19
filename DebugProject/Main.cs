@@ -27,8 +27,11 @@ namespace DebugProject
         {
             ResetInfomation();
             Model.Directories.ClearAll(); //clear all files in Base folders
-            TransformToFileCode(GetRawSourceCode());//convert text to java file
-            backgroundWorker.RunWorkerAsync();// run
+            if(isSourceCodeExisted() && isInputPathExisted())
+            {
+                TransformToFileCode(GetRawSourceCode());//convert text to java file
+                backgroundWorker.RunWorkerAsync();// run
+            }
         }
 
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -80,6 +83,7 @@ namespace DebugProject
             if(Error.Equals(""))
             {
                 lbMessage.Text = "Successful";
+                OpenOutputFolder();
             }
             lbState.Text = "Completed";
         }   
@@ -106,7 +110,7 @@ namespace DebugProject
             btnSeeDetail.TabIndex = 13;
             btnSeeDetail.Text = "See detail error >>";
             btnSeeDetail.UseVisualStyleBackColor = true;
-            this.Controls.Add(btnSeeDetail);        
+            this.Controls.Add(btnSeeDetail);      
         }
 
         private void SeeDetailError(object sender, EventArgs e)
@@ -158,6 +162,10 @@ namespace DebugProject
                 }
             }
         }
+        private void OpenOutputFolder()
+        {
+            Model.Commands.OpenFolder(Model.Directories.GetOutDir());
+        }
         private void DisableText()
         {
             txtInput.Enabled = false;
@@ -168,6 +176,29 @@ namespace DebugProject
             Error = "";
             lbMessage.Text = "";
             lbState.Text = "";
+        }
+        private Boolean isSourceCodeExisted()
+        {
+            if (txtRawSourceCode.Lines.Length == 0)
+            {
+                MessageBox.Show("Source code is empty, please insert !", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+        private Boolean isInputPathExisted()
+        {
+            if (txtInput.Text == "")
+            {
+                MessageBox.Show("Input folders must be given before running code !", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+        private void btnSetting_Click(object sender, EventArgs e)
+        {
+            Setting setting = new Setting();
+            setting.ShowDialog();
         }
     }
 }
