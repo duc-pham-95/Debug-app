@@ -32,6 +32,7 @@ namespace DebugProject
                 cmboxOutputType.SelectedIndex = 1;
             else if(Model.Files.customFileType.Equals(Model.Files.AnswerFileType))
                 cmboxOutputType.SelectedIndex = 2;
+            cmboxOutputType.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         private void btnOutputDir_Click(object sender, EventArgs e)
         {

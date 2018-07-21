@@ -14,6 +14,8 @@ namespace DebugProject.Model
         private static readonly string MainDir = @"\MAIN";
         private static readonly string OutputDir = @"\OUT";
         public static string CustomOutputDir { get; set; }
+        public static string InputDir { get; set; }
+        public static string TestOutputDir { get; set; }
 
          
 

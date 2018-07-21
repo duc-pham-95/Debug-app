@@ -15,20 +15,18 @@ namespace DebugProject
     public partial class Main : Form
     {
         private string Error;
-        private static string InputFolder;
-        private static string OutputFolder;
         public Main()
         {
             InitializeComponent();
-            DisableText();
             Model.Directories.CreateAll();//tao tat ca folder can thiet
         }
         private void btnStart_Click(object sender, EventArgs e)
         {
             ResetInfomation();
             Model.Directories.ClearAll(); //clear all files in Base folders
-            if(isSourceCodeExisted() && isInputPathExisted())
+            if(isSourceCodeExisted() && isInputPathExisted() && isTestOutputPathExisted())
             {
+                btnStart.Enabled = false;
                 TransformToFileCode(GetRawSourceCode());//convert text to java file
                 backgroundWorker.RunWorkerAsync();// run
             }
@@ -51,12 +49,12 @@ namespace DebugProject
             }
             else
             {
-                string[] InputFilePaths = Model.Files.GetInputFilePaths(InputFolder);// tap hop paths cua tung file input dau vao
-                string[] OutputFilePaths = Model.Files.GetOutputFilePaths(InputFolder);//tap hop paths cua tung file output dau ra            
+                string[] InputFilePaths = Model.Files.GetInputFilePaths(Model.Directories.InputDir);// tap hop paths cua tung file input dau vao
+                string[] OutputFilePaths = Model.Files.GetOutputFilePaths(Model.Directories.InputDir);//tap hop paths cua tung file output dau ra            
                 int i = 1;
                 foreach (string InputFilePath in InputFilePaths)
                 {
-                    string[] FileInputContent = Model.Files.GetFileContent(InputFilePath);// lay noi dung cua 1 file input
+                    string FileInputContent = Model.Files.GetFileContentText(InputFilePath);// lay noi dung cua 1 file input
                     Invoke((MethodInvoker)delegate
                     {
                         lbState.Text = "Running Test " + i+"...";
@@ -83,8 +81,19 @@ namespace DebugProject
             if(Error.Equals(""))
             {
                 lbMessage.Text = "Successful";
-                OpenOutputFolder();
+                string[] wrongAnswers = Model.Compare.Diff(Model.Directories.GetOutDir(), Model.Directories.TestOutputDir);   
+                if(wrongAnswers != null)
+                {
+                    Wrong wrong = new Wrong(wrongAnswers);
+                    wrong.ShowDialog();
+                }
+                else
+                {
+                    Passed pass = new Passed();
+                    pass.ShowDialog();
+                }
             }
+            btnStart.Enabled = true;
             lbState.Text = "Completed";
         }   
         private void TransformToFileCode(string[] text)
@@ -105,71 +114,18 @@ namespace DebugProject
         {
             Button btnSeeDetail = new Button();
             btnSeeDetail.Click += SeeDetailError;
-            btnSeeDetail.Location = new System.Drawing.Point(620, 230);
-            btnSeeDetail.Size = new System.Drawing.Size(134, 33);
+            btnSeeDetail.Location = new Point(17, 80);
+            btnSeeDetail.Size = new System.Drawing.Size(130, 25);
             btnSeeDetail.TabIndex = 13;
             btnSeeDetail.Text = "See detail error >>";
             btnSeeDetail.UseVisualStyleBackColor = true;
-            this.Controls.Add(btnSeeDetail);      
+            grbxRunningInfo.Controls.Add(btnSeeDetail);  
         }
 
         private void SeeDetailError(object sender, EventArgs e)
         {
             ErrorForm er = new ErrorForm(Error);
             er.ShowDialog(); 
-        }
-
-        private void btnInput_Click(object sender, EventArgs e)
-        {
-            GetIOExample(true); //true stands for getting Input
-        }
-
-        private void btnOutput_Click(object sender, EventArgs e)
-        {
-            GetIOExample(false); //false stands for getting Output
-        }
-        public void GetIOExample(Boolean I)
-        {
-            FolderBrowserDialog FolderChooser = new FolderBrowserDialog();
-            if (FolderChooser.ShowDialog() == DialogResult.OK)
-            {
-                string path = FolderChooser.SelectedPath;
-                if (path.Length > 0)
-                {
-
-                    if (Model.Directories.isDirEmpty(path) == false)
-                    {
-                        if(I)
-                        {
-                            txtInput.Text = path;
-                            InputFolder = path;
-                        }
-                        else
-                        {
-                            txtOutput.Text = path;
-                            OutputFolder = path;
-                        }                      
-                        FolderChooser.Dispose();
-                    }
-                    else
-                    {
-
-                    }
-                }
-                else
-                {
-
-                }
-            }
-        }
-        private void OpenOutputFolder()
-        {
-            Model.Commands.OpenFolder(Model.Directories.GetOutDir());
-        }
-        private void DisableText()
-        {
-            txtInput.Enabled = false;
-            txtOutput.Enabled = false;
         }
         private void ResetInfomation()
         {
@@ -188,9 +144,18 @@ namespace DebugProject
         }
         private Boolean isInputPathExisted()
         {
-            if (txtInput.Text == "")
+            if (Model.Directories.InputDir == null)
             {
-                MessageBox.Show("Input folders must be given before running code !", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Test Input folders must be given before running code !", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            return true;
+        }
+        private Boolean isTestOutputPathExisted()
+        {
+            if (Model.Directories.TestOutputDir == null)
+            {
+                MessageBox.Show("Test Output folders must be given before running code !", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
             return true;
@@ -199,6 +164,18 @@ namespace DebugProject
         {
             Setting setting = new Setting();
             setting.ShowDialog();
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            TestData test = new TestData();
+            test.ShowDialog();
+        }
+
+        private void btnInstruction_Click(object sender, EventArgs e)
+        {
+            Instruction instruction = new Instruction();
+            instruction.ShowDialog();
         }
     }
 }

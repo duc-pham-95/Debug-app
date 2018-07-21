@@ -51,6 +51,10 @@ namespace DebugProject.Model
 
             return File.ReadAllLines(Path);
         }       
+        public static string GetFileContentText(string Path)
+        {
+            return File.ReadAllText(Path);
+        }
         public static string[] GetInputFilePaths(string Path)
         {
 

@@ -29,15 +29,14 @@ namespace DebugProject.Model
             error = process.StandardError.ReadToEnd();
             return error;
         }
-        public static Result ProcessRunJava(string[] FileInputContent)
+        public static Result ProcessRunJava(string FileInputContent)
         {
             Process process = new Process(); //khoi tao process
             Result result = new Result(); //khoi tao doi tuong de luu tru ket qua tu process
             ProcessStartInfo StartInfo = new ProcessStartInfo();//khoi tao info chay cho process
-            StartInfo.FileName = "java.exe";
+            StartInfo.FileName = "javaw.exe";
             StartInfo.Arguments = "-cp "+'"' + Directories.GetMainDir() +'"' +" "+"Main";
             StartInfo.UseShellExecute = false;
-            StartInfo.CreateNoWindow = true;
             StartInfo.RedirectStandardError = true;
             StartInfo.RedirectStandardInput = true;
             StartInfo.RedirectStandardOutput = true;
@@ -45,10 +44,8 @@ namespace DebugProject.Model
             process.Start();//chay process
             /*doc input*/
             StreamWriter sw = process.StandardInput;
-            foreach(string Input in FileInputContent)
-            {
-                sw.WriteLine(Input);
-            }
+            StreamReader sr = process.StandardOutput;
+            sw.WriteLine(FileInputContent);
             sw.Close();
             /*kiem tra thoi gian chay*/
             Boolean TimeLimit = process.WaitForExit(Time);
@@ -59,8 +56,8 @@ namespace DebugProject.Model
                 return result;          
             }
             /*luu ket qua*/
-            StreamReader sr = process.StandardOutput;
-            result.Output = sr.ReadToEnd();
+            result.Output = sr.ReadToEndAsync().ToString();
+            sr.Close();
             result.Error = process.StandardError.ReadToEnd();           
             return result;
         }
@@ -71,6 +68,15 @@ namespace DebugProject.Model
             ProcessStartInfo StartInfo = new ProcessStartInfo();//khoi tao info chay cho process
             StartInfo.FileName = "explorer.exe";
             StartInfo.Arguments = path;
+            process.StartInfo = StartInfo;
+            process.Start();//chay process
+        }
+        public static void OpenFile(string path)
+        {
+            Process process = new Process(); //khoi tao process
+            Result result = new Result(); //khoi tao doi tuong de luu tru ket qua tu process
+            ProcessStartInfo StartInfo = new ProcessStartInfo();//khoi tao info chay cho process
+            StartInfo.FileName = path;
             process.StartInfo = StartInfo;
             process.Start();//chay process
         }

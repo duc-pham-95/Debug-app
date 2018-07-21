@@ -28,40 +28,55 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.txtRawSourceCode = new System.Windows.Forms.RichTextBox();
             this.btnStart = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.lbMessage = new System.Windows.Forms.Label();
-            this.txtInput = new System.Windows.Forms.TextBox();
-            this.txtOutput = new System.Windows.Forms.TextBox();
-            this.btnInput = new System.Windows.Forms.Button();
-            this.btnOutput = new System.Windows.Forms.Button();
             this.lbState = new System.Windows.Forms.Label();
-            this.lbInput = new System.Windows.Forms.Label();
-            this.lbOutput = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSetting = new System.Windows.Forms.Button();
+            this.grbxRunningInfo = new System.Windows.Forms.GroupBox();
+            this.grbxControl = new System.Windows.Forms.GroupBox();
+            this.btnInstruction = new System.Windows.Forms.Button();
+            this.lbSource = new System.Windows.Forms.Label();
+            this.btnTest = new System.Windows.Forms.Button();
+            this.grbxRunningInfo.SuspendLayout();
+            this.grbxControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtRawSourceCode
             // 
-            this.txtRawSourceCode.Location = new System.Drawing.Point(31, 136);
+            this.txtRawSourceCode.Location = new System.Drawing.Point(24, 55);
             this.txtRawSourceCode.Name = "txtRawSourceCode";
-            this.txtRawSourceCode.Size = new System.Drawing.Size(777, 590);
+            this.txtRawSourceCode.Size = new System.Drawing.Size(764, 473);
             this.txtRawSourceCode.TabIndex = 0;
             this.txtRawSourceCode.Text = "";
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(830, 136);
+            this.btnStart.ImageIndex = 0;
+            this.btnStart.ImageList = this.imageList1;
+            this.btnStart.Location = new System.Drawing.Point(24, 554);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(134, 38);
+            this.btnStart.Size = new System.Drawing.Size(127, 40);
             this.btnStart.TabIndex = 1;
-            this.btnStart.Text = "Start";
+            this.btnStart.Text = "Run";
+            this.btnStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "play-6-64.ico");
+            this.imageList1.Images.SetKeyName(1, "gear-2-64.ico");
+            this.imageList1.Images.SetKeyName(2, "arrow-133-64.ico");
+            this.imageList1.Images.SetKeyName(3, "error-3-64.ico");
             // 
             // backgroundWorker
             // 
@@ -73,86 +88,23 @@
             // lbMessage
             // 
             this.lbMessage.AutoSize = true;
-            this.lbMessage.Location = new System.Drawing.Point(898, 234);
+            this.lbMessage.Location = new System.Drawing.Point(92, 70);
             this.lbMessage.Name = "lbMessage";
             this.lbMessage.Size = new System.Drawing.Size(0, 17);
             this.lbMessage.TabIndex = 2;
             // 
-            // txtInput
-            // 
-            this.txtInput.Location = new System.Drawing.Point(94, 12);
-            this.txtInput.Name = "txtInput";
-            this.txtInput.Size = new System.Drawing.Size(334, 22);
-            this.txtInput.TabIndex = 3;
-            // 
-            // txtOutput
-            // 
-            this.txtOutput.Location = new System.Drawing.Point(94, 59);
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(334, 22);
-            this.txtOutput.TabIndex = 4;
-            // 
-            // btnInput
-            // 
-            this.btnInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInput.Location = new System.Drawing.Point(434, 12);
-            this.btnInput.Name = "btnInput";
-            this.btnInput.Size = new System.Drawing.Size(41, 23);
-            this.btnInput.TabIndex = 5;
-            this.btnInput.Text = "...";
-            this.btnInput.UseVisualStyleBackColor = true;
-            this.btnInput.Click += new System.EventHandler(this.btnInput_Click);
-            // 
-            // btnOutput
-            // 
-            this.btnOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOutput.Location = new System.Drawing.Point(434, 58);
-            this.btnOutput.Name = "btnOutput";
-            this.btnOutput.Size = new System.Drawing.Size(41, 23);
-            this.btnOutput.TabIndex = 6;
-            this.btnOutput.Text = "...";
-            this.btnOutput.UseVisualStyleBackColor = true;
-            this.btnOutput.Click += new System.EventHandler(this.btnOutput_Click);
-            // 
             // lbState
             // 
             this.lbState.AutoSize = true;
-            this.lbState.Location = new System.Drawing.Point(898, 198);
+            this.lbState.Location = new System.Drawing.Point(92, 34);
             this.lbState.Name = "lbState";
             this.lbState.Size = new System.Drawing.Size(0, 17);
             this.lbState.TabIndex = 7;
             // 
-            // lbInput
-            // 
-            this.lbInput.AutoSize = true;
-            this.lbInput.Location = new System.Drawing.Point(28, 15);
-            this.lbInput.Name = "lbInput";
-            this.lbInput.Size = new System.Drawing.Size(39, 17);
-            this.lbInput.TabIndex = 8;
-            this.lbInput.Text = "Input";
-            // 
-            // lbOutput
-            // 
-            this.lbOutput.AutoSize = true;
-            this.lbOutput.Location = new System.Drawing.Point(28, 62);
-            this.lbOutput.Name = "lbOutput";
-            this.lbOutput.Size = new System.Drawing.Size(51, 17);
-            this.lbOutput.TabIndex = 9;
-            this.lbOutput.Text = "Output";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(498, 62);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(198, 17);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "<- (compare output, not done)";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(827, 198);
+            this.label2.Location = new System.Drawing.Point(21, 34);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 17);
             this.label2.TabIndex = 11;
@@ -161,7 +113,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(827, 234);
+            this.label3.Location = new System.Drawing.Point(21, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 17);
             this.label3.TabIndex = 12;
@@ -169,37 +121,97 @@
             // 
             // btnSetting
             // 
-            this.btnSetting.Location = new System.Drawing.Point(988, 134);
+            this.btnSetting.ImageIndex = 1;
+            this.btnSetting.ImageList = this.imageList1;
+            this.btnSetting.Location = new System.Drawing.Point(447, 554);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(127, 40);
             this.btnSetting.TabIndex = 13;
             this.btnSetting.Text = "Setting";
+            this.btnSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSetting.UseVisualStyleBackColor = true;
             this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click);
+            // 
+            // grbxRunningInfo
+            // 
+            this.grbxRunningInfo.Controls.Add(this.label2);
+            this.grbxRunningInfo.Controls.Add(this.lbMessage);
+            this.grbxRunningInfo.Controls.Add(this.label3);
+            this.grbxRunningInfo.Controls.Add(this.lbState);
+            this.grbxRunningInfo.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.grbxRunningInfo.Location = new System.Drawing.Point(31, 653);
+            this.grbxRunningInfo.Name = "grbxRunningInfo";
+            this.grbxRunningInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.grbxRunningInfo.Size = new System.Drawing.Size(813, 139);
+            this.grbxRunningInfo.TabIndex = 14;
+            this.grbxRunningInfo.TabStop = false;
+            this.grbxRunningInfo.Text = "Running Information";
+            // 
+            // grbxControl
+            // 
+            this.grbxControl.Controls.Add(this.btnInstruction);
+            this.grbxControl.Controls.Add(this.lbSource);
+            this.grbxControl.Controls.Add(this.btnTest);
+            this.grbxControl.Controls.Add(this.txtRawSourceCode);
+            this.grbxControl.Controls.Add(this.btnStart);
+            this.grbxControl.Controls.Add(this.btnSetting);
+            this.grbxControl.Location = new System.Drawing.Point(31, 21);
+            this.grbxControl.Name = "grbxControl";
+            this.grbxControl.Size = new System.Drawing.Size(813, 611);
+            this.grbxControl.TabIndex = 15;
+            this.grbxControl.TabStop = false;
+            this.grbxControl.Text = "Controls";
+            // 
+            // btnInstruction
+            // 
+            this.btnInstruction.ImageIndex = 3;
+            this.btnInstruction.ImageList = this.imageList1;
+            this.btnInstruction.Location = new System.Drawing.Point(661, 554);
+            this.btnInstruction.Name = "btnInstruction";
+            this.btnInstruction.Size = new System.Drawing.Size(127, 40);
+            this.btnInstruction.TabIndex = 18;
+            this.btnInstruction.Text = "Instruction";
+            this.btnInstruction.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnInstruction.UseVisualStyleBackColor = true;
+            this.btnInstruction.Click += new System.EventHandler(this.btnInstruction_Click);
+            // 
+            // lbSource
+            // 
+            this.lbSource.AutoSize = true;
+            this.lbSource.Location = new System.Drawing.Point(27, 35);
+            this.lbSource.Name = "lbSource";
+            this.lbSource.Size = new System.Drawing.Size(174, 17);
+            this.lbSource.TabIndex = 17;
+            this.lbSource.Text = "Source code (Java only)  :";
+            // 
+            // btnTest
+            // 
+            this.btnTest.ImageIndex = 2;
+            this.btnTest.ImageList = this.imageList1;
+            this.btnTest.Location = new System.Drawing.Point(234, 554);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(127, 40);
+            this.btnTest.TabIndex = 16;
+            this.btnTest.Text = "Test Data";
+            this.btnTest.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1308, 798);
-            this.Controls.Add(this.btnSetting);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.lbOutput);
-            this.Controls.Add(this.lbInput);
-            this.Controls.Add(this.lbState);
-            this.Controls.Add(this.btnOutput);
-            this.Controls.Add(this.btnInput);
-            this.Controls.Add(this.txtOutput);
-            this.Controls.Add(this.txtInput);
-            this.Controls.Add(this.lbMessage);
-            this.Controls.Add(this.btnStart);
-            this.Controls.Add(this.txtRawSourceCode);
+            this.ClientSize = new System.Drawing.Size(873, 816);
+            this.Controls.Add(this.grbxControl);
+            this.Controls.Add(this.grbxRunningInfo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
-            this.Text = "Debug";
+            this.Text = "Code Runner 1.0 DKV";
+            this.grbxRunningInfo.ResumeLayout(false);
+            this.grbxRunningInfo.PerformLayout();
+            this.grbxControl.ResumeLayout(false);
+            this.grbxControl.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -209,17 +221,16 @@
         private System.Windows.Forms.Button btnStart;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.Label lbMessage;
-        private System.Windows.Forms.TextBox txtInput;
-        private System.Windows.Forms.TextBox txtOutput;
-        private System.Windows.Forms.Button btnInput;
-        private System.Windows.Forms.Button btnOutput;
         private System.Windows.Forms.Label lbState;
-        private System.Windows.Forms.Label lbInput;
-        private System.Windows.Forms.Label lbOutput;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSetting;
+        private System.Windows.Forms.GroupBox grbxRunningInfo;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.GroupBox grbxControl;
+        private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Label lbSource;
+        private System.Windows.Forms.Button btnInstruction;
     }
 }
 

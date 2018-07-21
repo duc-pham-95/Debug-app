@@ -61,6 +61,7 @@
             this.ClientSize = new System.Drawing.Size(1477, 744);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "ErrorForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Error";
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
