@@ -41,10 +41,12 @@
             this.btnOpenYour = new System.Windows.Forms.Button();
             this.btnOpenInput = new System.Windows.Forms.Button();
             this.btnAllOut = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.rtbxYour = new System.Windows.Forms.RichTextBox();
+            this.rtbxCorrect = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.rtbxInput = new System.Windows.Forms.RichTextBox();
             this.grbxInfo.SuspendLayout();
             this.grbxWrongData.SuspendLayout();
             this.SuspendLayout();
@@ -178,26 +180,28 @@
             this.btnAllOut.UseVisualStyleBackColor = true;
             this.btnAllOut.Click += new System.EventHandler(this.btnAllOut_Click);
             // 
-            // richTextBox1
+            // rtbxYour
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(366, 62);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(371, 343);
-            this.richTextBox1.TabIndex = 3;
-            this.richTextBox1.Text = "";
+            this.rtbxYour.Location = new System.Drawing.Point(689, 62);
+            this.rtbxYour.Name = "rtbxYour";
+            this.rtbxYour.Size = new System.Drawing.Size(312, 343);
+            this.rtbxYour.TabIndex = 3;
+            this.rtbxYour.Text = "";
+            this.rtbxYour.WordWrap = false;
             // 
-            // richTextBox2
+            // rtbxCorrect
             // 
-            this.richTextBox2.Location = new System.Drawing.Point(754, 62);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(371, 343);
-            this.richTextBox2.TabIndex = 4;
-            this.richTextBox2.Text = "";
+            this.rtbxCorrect.Location = new System.Drawing.Point(1016, 62);
+            this.rtbxCorrect.Name = "rtbxCorrect";
+            this.rtbxCorrect.Size = new System.Drawing.Size(312, 343);
+            this.rtbxCorrect.TabIndex = 4;
+            this.rtbxCorrect.Text = "";
+            this.rtbxCorrect.WordWrap = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(363, 30);
+            this.label1.Location = new System.Drawing.Point(686, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(88, 17);
             this.label1.TabIndex = 5;
@@ -206,21 +210,41 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(751, 30);
+            this.label2.Location = new System.Drawing.Point(1013, 30);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 17);
             this.label2.TabIndex = 6;
             this.label2.Text = "Correct Answer";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(363, 30);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(39, 17);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Input";
+            // 
+            // rtbxInput
+            // 
+            this.rtbxInput.Location = new System.Drawing.Point(366, 62);
+            this.rtbxInput.Name = "rtbxInput";
+            this.rtbxInput.Size = new System.Drawing.Size(312, 343);
+            this.rtbxInput.TabIndex = 7;
+            this.rtbxInput.Text = "";
+            this.rtbxInput.WordWrap = false;
+            // 
             // Wrong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1134, 421);
+            this.ClientSize = new System.Drawing.Size(1348, 421);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.rtbxInput);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.richTextBox2);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.rtbxCorrect);
+            this.Controls.Add(this.rtbxYour);
             this.Controls.Add(this.btnAllOut);
             this.Controls.Add(this.grbxWrongData);
             this.Controls.Add(this.grbxInfo);
@@ -251,9 +275,11 @@
         private System.Windows.Forms.Button btnAllOut;
         private System.Windows.Forms.Label lbShowTest;
         private System.Windows.Forms.Label lbShowResult;
-        private System.Windows.Forms.RichTextBox richTextBox1;
-        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox rtbxYour;
+        private System.Windows.Forms.RichTextBox rtbxCorrect;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RichTextBox rtbxInput;
     }
 }

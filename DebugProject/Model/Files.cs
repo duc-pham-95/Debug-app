@@ -91,6 +91,29 @@ namespace DebugProject.Model
             }
             return FilePaths;
         }
+        public static string[] GetRunJavaCommands(string Path)
+        {
+            string OutType = TextFileType;
+            if (customFileType.Equals(OutputFileType))
+            {
+                OutType = OutputFileType;
+            }
+            if (customFileType.Equals(AnswerFileType))
+            {
+                OutType = AnswerFileType;
+            }
+            DirectoryInfo Dir = new DirectoryInfo(Path);
+            string[] Commands = new string[Dir.GetFiles().Length];
+            int i = 0;
+            foreach (FileInfo File in Dir.GetFiles())
+            {
+                int Index = File.Name.LastIndexOf('.');
+                string Temp = File.Name.Substring(0, Index);
+                string Command = "java Main < " + '"' + Path + @"\" + File.Name + '"' + " > " + '"' + Directories.GetOutDir() + @"\" + Temp + OutType + '"';
+                Commands[i++] = Command;
+            }
+            return Commands;
+        }
         public static Boolean IsFileExist(string Path)
         {
             if (File.Exists(Path))

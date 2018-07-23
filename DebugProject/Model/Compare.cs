@@ -40,6 +40,8 @@ namespace DebugProject.Model
                         wrongAnswerInfo[1] = correctOutputFiles[filePosition].FullName;
                         wrongAnswerInfo[2] = inputFiles[filePosition].Name;
                         wrongAnswerInfo[3] = inputFiles[filePosition].FullName;
+                        wrongAnswerInfo[4] = yourLine;
+                        wrongAnswerInfo[5] = correctLine;
                         return wrongAnswerInfo;
                     }
                 }
@@ -52,7 +54,23 @@ namespace DebugProject.Model
                             wrongAnswerInfo[0] = yourOutputFiles[filePosition].FullName;
                             wrongAnswerInfo[1] = correctOutputFiles[filePosition].FullName;
                             wrongAnswerInfo[2] = inputFiles[filePosition].Name;
-                            wrongAnswerInfo[3] = inputFiles[filePosition].FullName;       
+                            wrongAnswerInfo[3] = inputFiles[filePosition].FullName;
+                            wrongAnswerInfo[4] = yourLines[linePosition];
+                            return wrongAnswerInfo;
+                        }
+                    }
+                }
+                if (yourLinesLength < correctLinesLength)
+                {
+                    for (int linePosition = yourLinesLength; linePosition < correctLinesLength; linePosition++)
+                    {
+                        if (!reg.IsMatch(correctLines[linePosition]))
+                        {
+                            wrongAnswerInfo[0] = yourOutputFiles[filePosition].FullName;
+                            wrongAnswerInfo[1] = correctOutputFiles[filePosition].FullName;
+                            wrongAnswerInfo[2] = inputFiles[filePosition].Name;
+                            wrongAnswerInfo[3] = inputFiles[filePosition].FullName;
+                            wrongAnswerInfo[5] = correctLines[linePosition];
                             return wrongAnswerInfo;
                         }
                     }

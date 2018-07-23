@@ -26,7 +26,7 @@ namespace DebugProject
             Model.Directories.ClearAll(); //clear all files in Base folders
             if(isSourceCodeExisted() && isInputPathExisted() && isTestOutputPathExisted())
             {
-                btnStart.Enabled = false;
+                DisableBtn();
                 TransformToFileCode(GetRawSourceCode());//convert text to java file
                 backgroundWorker.RunWorkerAsync();// run
             }
@@ -49,17 +49,19 @@ namespace DebugProject
             }
             else
             {
-                string[] InputFilePaths = Model.Files.GetInputFilePaths(Model.Directories.InputDir);// tap hop paths cua tung file input dau vao
-                string[] OutputFilePaths = Model.Files.GetOutputFilePaths(Model.Directories.InputDir);//tap hop paths cua tung file output dau ra            
+                //string[] InputFilePaths = Model.Files.GetInputFilePaths(Model.Directories.InputDir);// tap hop paths cua tung file input dau vao
+                //string[] OutputFilePaths = Model.Files.GetOutputFilePaths(Model.Directories.InputDir);//tap hop paths cua tung file output dau ra    
+                string[] Commands = Model.Files.GetRunJavaCommands(Model.Directories.InputDir);        
                 int i = 1;
-                foreach (string InputFilePath in InputFilePaths)
+                foreach (string command in Commands)
                 {
-                    string FileInputContent = Model.Files.GetFileContentText(InputFilePath);// lay noi dung cua 1 file input
+                    //string FileInputContent = Model.Files.GetFileContentText(InputFilePath);// lay noi dung cua 1 file input
                     Invoke((MethodInvoker)delegate
                     {
                         lbState.Text = "Running Test " + i+"...";
                     });
-                    Model.Result result = Model.Commands.ProcessRunJava(FileInputContent);//run 
+                    //Model.Result result = Model.Commands.ProcessRunJava(FileInputContent);//run 
+                    Model.Result result = Model.Commands.ProcessRunJava(command);
                     if (result.Error != "")
                     {
                         Error = result.Error;
@@ -70,7 +72,7 @@ namespace DebugProject
                         });
                         break;
                     }
-                    File.WriteAllText(OutputFilePaths[i - 1], result.Output); //ghi ket qua xuong tung file output
+                    //File.WriteAllText(OutputFilePaths[i - 1], result.Output); //ghi ket qua xuong tung file output
                     i++;
                 }
                           
@@ -93,7 +95,7 @@ namespace DebugProject
                     pass.ShowDialog();
                 }
             }
-            btnStart.Enabled = true;
+            EnableBtn();
             lbState.Text = "Completed";
         }   
         private void TransformToFileCode(string[] text)
@@ -176,6 +178,18 @@ namespace DebugProject
         {
             Instruction instruction = new Instruction();
             instruction.ShowDialog();
+        }
+        public void DisableBtn()
+        {
+            btnSetting.Enabled = false;
+            btnStart.Enabled = false;
+            btnTest.Enabled = false;
+        }
+        public void EnableBtn()
+        {
+            btnSetting.Enabled = true;
+            btnStart.Enabled = true;
+            btnTest.Enabled = true;
         }
     }
 }

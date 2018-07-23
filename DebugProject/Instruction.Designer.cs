@@ -47,6 +47,7 @@
             this.ClientSize = new System.Drawing.Size(453, 432);
             this.Controls.Add(this.richTextBox1);
             this.Name = "Instruction";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Instruction";
             this.ResumeLayout(false);
 

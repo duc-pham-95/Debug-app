@@ -23,6 +23,26 @@ namespace DebugProject
         {
             lbShowResult.Text = "Wrong Answer";
             lbShowTest.Text = WrongAnswers[2];
+            rtbxInput.Text = Model.Files.GetFileContentText(WrongAnswers[3]);
+            rtbxYour.Text = Model.Files.GetFileContentText(WrongAnswers[0]);
+            rtbxCorrect.Text = Model.Files.GetFileContentText(WrongAnswers[1]);
+            if(WrongAnswers[4] == null)
+            {
+                rtbxCorrect.Find(WrongAnswers[5]);
+                rtbxCorrect.SelectionColor = Color.Red;
+            }
+            else if(WrongAnswers[5] == null)
+            {
+                rtbxYour.Find(WrongAnswers[4]);
+                rtbxYour.SelectionColor = Color.Red;
+            }
+            else
+            {
+                rtbxYour.Find(WrongAnswers[4]);
+                rtbxYour.SelectionColor = Color.Red;
+                rtbxCorrect.Find(WrongAnswers[5]);
+                rtbxCorrect.SelectionColor = Color.Red;
+            }
         }
 
         private void btnOpenYour_Click(object sender, EventArgs e)
