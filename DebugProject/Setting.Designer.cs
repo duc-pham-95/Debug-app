@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Setting));
             this.grbSetting = new System.Windows.Forms.GroupBox();
-            this.btnOK = new System.Windows.Forms.Button();
-            this.lbTimeLimit = new System.Windows.Forms.Label();
-            this.lbOutput = new System.Windows.Forms.Label();
-            this.lbOutputType = new System.Windows.Forms.Label();
-            this.numericUpDownTimeLimit = new System.Windows.Forms.NumericUpDown();
-            this.txtOutput = new System.Windows.Forms.TextBox();
-            this.cmboxOutputType = new System.Windows.Forms.ComboBox();
-            this.btnOutputDir = new System.Windows.Forms.Button();
-            this.lbOutputWarning = new System.Windows.Forms.Label();
-            this.lbTip = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lbTip = new System.Windows.Forms.Label();
+            this.lbOutputWarning = new System.Windows.Forms.Label();
+            this.btnOutputDir = new System.Windows.Forms.Button();
+            this.cmboxOutputType = new System.Windows.Forms.ComboBox();
+            this.txtOutput = new System.Windows.Forms.TextBox();
+            this.numericUpDownTimeLimit = new System.Windows.Forms.NumericUpDown();
+            this.lbOutputType = new System.Windows.Forms.Label();
+            this.lbOutput = new System.Windows.Forms.Label();
+            this.lbTimeLimit = new System.Windows.Forms.Label();
+            this.btnOK = new System.Windows.Forms.Button();
             this.grbSetting.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTimeLimit)).BeginInit();
             this.SuspendLayout();
@@ -64,42 +65,57 @@
             this.grbSetting.TabStop = false;
             this.grbSetting.Text = "Setting Information";
             // 
-            // btnOK
+            // label1
             // 
-            this.btnOK.Location = new System.Drawing.Point(298, 414);
-            this.btnOK.Name = "btnOK";
-            this.btnOK.Size = new System.Drawing.Size(101, 30);
-            this.btnOK.TabIndex = 1;
-            this.btnOK.Text = "OK";
-            this.btnOK.UseVisualStyleBackColor = true;
-            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(168, 126);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(94, 17);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "(Milliseconds)";
             // 
-            // lbTimeLimit
+            // lbTip
             // 
-            this.lbTimeLimit.AutoSize = true;
-            this.lbTimeLimit.Location = new System.Drawing.Point(23, 56);
-            this.lbTimeLimit.Name = "lbTimeLimit";
-            this.lbTimeLimit.Size = new System.Drawing.Size(202, 17);
-            this.lbTimeLimit.TabIndex = 0;
-            this.lbTimeLimit.Text = "Time limit for a single testcase:";
+            this.lbTip.AutoSize = true;
+            this.lbTip.Location = new System.Drawing.Point(23, 87);
+            this.lbTip.Name = "lbTip";
+            this.lbTip.Size = new System.Drawing.Size(316, 17);
+            this.lbTip.TabIndex = 8;
+            this.lbTip.Text = "(1000ms equal to 1s, allows maximum 1 million s)";
             // 
-            // lbOutput
+            // lbOutputWarning
             // 
-            this.lbOutput.AutoSize = true;
-            this.lbOutput.Location = new System.Drawing.Point(23, 179);
-            this.lbOutput.Name = "lbOutput";
-            this.lbOutput.Size = new System.Drawing.Size(247, 17);
-            this.lbOutput.TabIndex = 1;
-            this.lbOutput.Text = "Where to get your outputs after finish:";
+            this.lbOutputWarning.AutoSize = true;
+            this.lbOutputWarning.Location = new System.Drawing.Point(23, 205);
+            this.lbOutputWarning.Name = "lbOutputWarning";
+            this.lbOutputWarning.Size = new System.Drawing.Size(246, 17);
+            this.lbOutputWarning.TabIndex = 7;
+            this.lbOutputWarning.Text = "(you should choose an empty folder !)";
             // 
-            // lbOutputType
+            // btnOutputDir
             // 
-            this.lbOutputType.AutoSize = true;
-            this.lbOutputType.Location = new System.Drawing.Point(23, 282);
-            this.lbOutputType.Name = "lbOutputType";
-            this.lbOutputType.Size = new System.Drawing.Size(86, 17);
-            this.lbOutputType.TabIndex = 2;
-            this.lbOutputType.Text = "Output type:";
+            this.btnOutputDir.Location = new System.Drawing.Point(286, 234);
+            this.btnOutputDir.Name = "btnOutputDir";
+            this.btnOutputDir.Size = new System.Drawing.Size(75, 26);
+            this.btnOutputDir.TabIndex = 6;
+            this.btnOutputDir.Text = "...";
+            this.btnOutputDir.UseVisualStyleBackColor = true;
+            this.btnOutputDir.Click += new System.EventHandler(this.btnOutputDir_Click);
+            // 
+            // cmboxOutputType
+            // 
+            this.cmboxOutputType.FormattingEnabled = true;
+            this.cmboxOutputType.Location = new System.Drawing.Point(26, 312);
+            this.cmboxOutputType.Name = "cmboxOutputType";
+            this.cmboxOutputType.Size = new System.Drawing.Size(136, 24);
+            this.cmboxOutputType.TabIndex = 5;
+            // 
+            // txtOutput
+            // 
+            this.txtOutput.Location = new System.Drawing.Point(26, 234);
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.Size = new System.Drawing.Size(254, 22);
+            this.txtOutput.TabIndex = 4;
             // 
             // numericUpDownTimeLimit
             // 
@@ -113,57 +129,42 @@
             this.numericUpDownTimeLimit.Size = new System.Drawing.Size(136, 22);
             this.numericUpDownTimeLimit.TabIndex = 3;
             // 
-            // txtOutput
+            // lbOutputType
             // 
-            this.txtOutput.Location = new System.Drawing.Point(26, 234);
-            this.txtOutput.Name = "txtOutput";
-            this.txtOutput.Size = new System.Drawing.Size(254, 22);
-            this.txtOutput.TabIndex = 4;
+            this.lbOutputType.AutoSize = true;
+            this.lbOutputType.Location = new System.Drawing.Point(23, 282);
+            this.lbOutputType.Name = "lbOutputType";
+            this.lbOutputType.Size = new System.Drawing.Size(86, 17);
+            this.lbOutputType.TabIndex = 2;
+            this.lbOutputType.Text = "Output type:";
             // 
-            // cmboxOutputType
+            // lbOutput
             // 
-            this.cmboxOutputType.FormattingEnabled = true;
-            this.cmboxOutputType.Location = new System.Drawing.Point(26, 312);
-            this.cmboxOutputType.Name = "cmboxOutputType";
-            this.cmboxOutputType.Size = new System.Drawing.Size(136, 24);
-            this.cmboxOutputType.TabIndex = 5;
+            this.lbOutput.AutoSize = true;
+            this.lbOutput.Location = new System.Drawing.Point(23, 179);
+            this.lbOutput.Name = "lbOutput";
+            this.lbOutput.Size = new System.Drawing.Size(247, 17);
+            this.lbOutput.TabIndex = 1;
+            this.lbOutput.Text = "Where to get your outputs after finish:";
             // 
-            // btnOutputDir
+            // lbTimeLimit
             // 
-            this.btnOutputDir.Location = new System.Drawing.Point(286, 234);
-            this.btnOutputDir.Name = "btnOutputDir";
-            this.btnOutputDir.Size = new System.Drawing.Size(75, 26);
-            this.btnOutputDir.TabIndex = 6;
-            this.btnOutputDir.Text = "...";
-            this.btnOutputDir.UseVisualStyleBackColor = true;
-            this.btnOutputDir.Click += new System.EventHandler(this.btnOutputDir_Click);
+            this.lbTimeLimit.AutoSize = true;
+            this.lbTimeLimit.Location = new System.Drawing.Point(23, 56);
+            this.lbTimeLimit.Name = "lbTimeLimit";
+            this.lbTimeLimit.Size = new System.Drawing.Size(202, 17);
+            this.lbTimeLimit.TabIndex = 0;
+            this.lbTimeLimit.Text = "Time limit for a single testcase:";
             // 
-            // lbOutputWarning
+            // btnOK
             // 
-            this.lbOutputWarning.AutoSize = true;
-            this.lbOutputWarning.Location = new System.Drawing.Point(23, 205);
-            this.lbOutputWarning.Name = "lbOutputWarning";
-            this.lbOutputWarning.Size = new System.Drawing.Size(246, 17);
-            this.lbOutputWarning.TabIndex = 7;
-            this.lbOutputWarning.Text = "(you should choose an empty folder !)";
-            // 
-            // lbTip
-            // 
-            this.lbTip.AutoSize = true;
-            this.lbTip.Location = new System.Drawing.Point(23, 87);
-            this.lbTip.Name = "lbTip";
-            this.lbTip.Size = new System.Drawing.Size(316, 17);
-            this.lbTip.TabIndex = 8;
-            this.lbTip.Text = "(1000ms equal to 1s, allows maximum 1 million s)";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(168, 126);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 17);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "(Milliseconds)";
+            this.btnOK.Location = new System.Drawing.Point(298, 414);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(101, 30);
+            this.btnOK.TabIndex = 1;
+            this.btnOK.Text = "OK";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // Setting
             // 
@@ -172,6 +173,7 @@
             this.ClientSize = new System.Drawing.Size(414, 468);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.grbSetting);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Setting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Setting";

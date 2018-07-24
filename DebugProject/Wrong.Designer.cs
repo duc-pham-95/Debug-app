@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Wrong));
             this.grbxInfo = new System.Windows.Forms.GroupBox();
             this.lbShowTest = new System.Windows.Forms.Label();
             this.lbShowResult = new System.Windows.Forms.Label();
@@ -248,6 +249,7 @@
             this.Controls.Add(this.btnAllOut);
             this.Controls.Add(this.grbxWrongData);
             this.Controls.Add(this.grbxInfo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Wrong";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Wrong";

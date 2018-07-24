@@ -52,15 +52,16 @@
             // 
             this.txtRawSourceCode.Location = new System.Drawing.Point(24, 55);
             this.txtRawSourceCode.Name = "txtRawSourceCode";
-            this.txtRawSourceCode.Size = new System.Drawing.Size(764, 473);
+            this.txtRawSourceCode.Size = new System.Drawing.Size(590, 439);
             this.txtRawSourceCode.TabIndex = 0;
             this.txtRawSourceCode.Text = "";
+            this.txtRawSourceCode.WordWrap = false;
             // 
             // btnStart
             // 
             this.btnStart.ImageIndex = 0;
             this.btnStart.ImageList = this.imageList1;
-            this.btnStart.Location = new System.Drawing.Point(24, 554);
+            this.btnStart.Location = new System.Drawing.Point(22, 509);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(127, 40);
             this.btnStart.TabIndex = 1;
@@ -88,7 +89,7 @@
             // lbMessage
             // 
             this.lbMessage.AutoSize = true;
-            this.lbMessage.Location = new System.Drawing.Point(92, 70);
+            this.lbMessage.Location = new System.Drawing.Point(92, 60);
             this.lbMessage.Name = "lbMessage";
             this.lbMessage.Size = new System.Drawing.Size(0, 17);
             this.lbMessage.TabIndex = 2;
@@ -113,7 +114,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 70);
+            this.label3.Location = new System.Drawing.Point(21, 60);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 17);
             this.label3.TabIndex = 12;
@@ -123,7 +124,7 @@
             // 
             this.btnSetting.ImageIndex = 1;
             this.btnSetting.ImageList = this.imageList1;
-            this.btnSetting.Location = new System.Drawing.Point(447, 554);
+            this.btnSetting.Location = new System.Drawing.Point(330, 509);
             this.btnSetting.Name = "btnSetting";
             this.btnSetting.Size = new System.Drawing.Size(127, 40);
             this.btnSetting.TabIndex = 13;
@@ -139,10 +140,10 @@
             this.grbxRunningInfo.Controls.Add(this.label3);
             this.grbxRunningInfo.Controls.Add(this.lbState);
             this.grbxRunningInfo.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.grbxRunningInfo.Location = new System.Drawing.Point(31, 653);
+            this.grbxRunningInfo.Location = new System.Drawing.Point(31, 592);
             this.grbxRunningInfo.Name = "grbxRunningInfo";
             this.grbxRunningInfo.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.grbxRunningInfo.Size = new System.Drawing.Size(813, 139);
+            this.grbxRunningInfo.Size = new System.Drawing.Size(638, 143);
             this.grbxRunningInfo.TabIndex = 14;
             this.grbxRunningInfo.TabStop = false;
             this.grbxRunningInfo.Text = "Running Information";
@@ -157,7 +158,7 @@
             this.grbxControl.Controls.Add(this.btnSetting);
             this.grbxControl.Location = new System.Drawing.Point(31, 21);
             this.grbxControl.Name = "grbxControl";
-            this.grbxControl.Size = new System.Drawing.Size(813, 611);
+            this.grbxControl.Size = new System.Drawing.Size(638, 565);
             this.grbxControl.TabIndex = 15;
             this.grbxControl.TabStop = false;
             this.grbxControl.Text = "Controls";
@@ -166,7 +167,7 @@
             // 
             this.btnInstruction.ImageIndex = 3;
             this.btnInstruction.ImageList = this.imageList1;
-            this.btnInstruction.Location = new System.Drawing.Point(661, 554);
+            this.btnInstruction.Location = new System.Drawing.Point(485, 509);
             this.btnInstruction.Name = "btnInstruction";
             this.btnInstruction.Size = new System.Drawing.Size(127, 40);
             this.btnInstruction.TabIndex = 18;
@@ -178,7 +179,7 @@
             // lbSource
             // 
             this.lbSource.AutoSize = true;
-            this.lbSource.Location = new System.Drawing.Point(27, 35);
+            this.lbSource.Location = new System.Drawing.Point(21, 35);
             this.lbSource.Name = "lbSource";
             this.lbSource.Size = new System.Drawing.Size(174, 17);
             this.lbSource.TabIndex = 17;
@@ -188,7 +189,7 @@
             // 
             this.btnTest.ImageIndex = 2;
             this.btnTest.ImageList = this.imageList1;
-            this.btnTest.Location = new System.Drawing.Point(234, 554);
+            this.btnTest.Location = new System.Drawing.Point(176, 509);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(127, 40);
             this.btnTest.TabIndex = 16;
@@ -199,9 +200,9 @@
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 816);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.ClientSize = new System.Drawing.Size(699, 747);
             this.Controls.Add(this.grbxControl);
             this.Controls.Add(this.grbxRunningInfo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

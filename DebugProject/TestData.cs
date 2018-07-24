@@ -54,12 +54,10 @@ namespace DebugProject
                         if (I)
                         {
                             txtInput.Text = path;
-                            Model.Directories.InputDir = path;
                         }
                         else
                         {
                             txtOutput.Text = path;
-                            Model.Directories.TestOutputDir = path;
                         }
                         FolderChooser.Dispose();
                     }
@@ -68,6 +66,24 @@ namespace DebugProject
                         MessageBox.Show("the folder is empty ! no data found !");
                     }
                 }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(txtInput.Text == "" )
+            {
+                MessageBox.Show("Input folder not found !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else if(txtOutput.Text == "")
+            {
+                MessageBox.Show("Output folder not found !", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Model.Directories.TestOutputDir = txtOutput.Text;
+                Model.Directories.InputDir = txtInput.Text;
+                Dispose();
             }
         }
     }
